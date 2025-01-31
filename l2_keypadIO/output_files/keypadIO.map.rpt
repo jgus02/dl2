@@ -1,5 +1,5 @@
 Analysis & Synthesis report for keypadIO
-Fri Jan 31 16:04:05 2025
+Fri Jan 31 16:13:47 2025
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -14,17 +14,23 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Registers Removed During Synthesis
-  9. Removed Registers Triggering Further Register Optimizations
- 10. General Register Statistics
- 11. Parameter Settings for User Entity Instance: shift_reg:hift_reg
- 12. Parameter Settings for User Entity Instance: hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst
- 13. Port Connectivity Checks: "hex2sevenMX:h2sMX|fsm:FSM_inst"
- 14. Port Connectivity Checks: "hex2sevenMX:h2sMX|clockLadder:clock_Ladder"
- 15. Port Connectivity Checks: "hex2sevenMX:h2sMX"
- 16. Port Connectivity Checks: "shift_reg:hift_reg"
- 17. Post-Synthesis Netlist Statistics for Top Partition
- 18. Elapsed Time Per Partition
- 19. Analysis & Synthesis Messages
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: keypad_input:kpd_in
+ 12. Parameter Settings for User Entity Instance: keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider
+ 13. Parameter Settings for User Entity Instance: keypad_input:kpd_in|keypad_base:keypad_base|keypad_decoder:keypad_key_decoder
+ 14. Parameter Settings for User Entity Instance: keypad_input:kpd_in|shift_reg:shift_reg
+ 15. Parameter Settings for User Entity Instance: hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst
+ 16. Port Connectivity Checks: "hex2sevenMX:h2sMX|fsm:FSM_inst"
+ 17. Port Connectivity Checks: "hex2sevenMX:h2sMX|clockLadder:clock_Ladder"
+ 18. Port Connectivity Checks: "hex2sevenMX:h2sMX"
+ 19. Port Connectivity Checks: "keypad_input:kpd_in|shift_reg:shift_reg"
+ 20. Port Connectivity Checks: "keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm"
+ 21. Port Connectivity Checks: "keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider"
+ 22. Port Connectivity Checks: "keypad_input:kpd_in|keypad_base:keypad_base"
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
 
 
 
@@ -51,15 +57,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Jan 31 16:04:05 2025          ;
+; Analysis & Synthesis Status        ; Successful - Fri Jan 31 16:13:47 2025          ;
 ; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                      ; keypadIO                                       ;
 ; Top-level Entity Name              ; keypadIO                                       ;
 ; Family                             ; MAX 10                                         ;
-; Total logic elements               ; 24                                             ;
-;     Total combinational functions  ; 24                                             ;
-;     Dedicated logic registers      ; 20                                             ;
-; Total registers                    ; 20                                             ;
+; Total logic elements               ; 145                                            ;
+;     Total combinational functions  ; 117                                            ;
+;     Dedicated logic registers      ; 91                                             ;
+; Total registers                    ; 91                                             ;
 ; Total pins                         ; 44                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
@@ -169,24 +175,30 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-10        ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-10        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                      ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                  ; Library ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
-; keypadIO.sv                      ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/keypadIO.sv                  ;         ;
-; clockLadder.sv                   ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/clockLadder.sv               ;         ;
-; four2one.sv                      ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/four2one.sv                  ;         ;
-; fsm.sv                           ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/fsm.sv                       ;         ;
-; output_files/nBitRegister.sv     ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/output_files/nBitRegister.sv ;         ;
-; hex2sevenMX.sv                   ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/hex2sevenMX.sv               ;         ;
-; output_files/shift_reg.sv        ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/output_files/shift_reg.sv    ;         ;
-; binary2Seven_high.sv             ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/binary2Seven_high.sv         ;         ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                        ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                    ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------+---------+
+; keypadIO.sv                      ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/keypadIO.sv                    ;         ;
+; clockLadder.sv                   ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/clockLadder.sv                 ;         ;
+; four2one.sv                      ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/four2one.sv                    ;         ;
+; fsm.sv                           ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/fsm.sv                         ;         ;
+; output_files/nBitRegister.sv     ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/output_files/nBitRegister.sv   ;         ;
+; hex2sevenMX.sv                   ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/hex2sevenMX.sv                 ;         ;
+; output_files/keypad_base.sv      ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/output_files/keypad_base.sv    ;         ;
+; output_files/keypad_decoder.sv   ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/output_files/keypad_decoder.sv ;         ;
+; output_files/keypad_input.sv     ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/output_files/keypad_input.sv   ;         ;
+; output_files/keypad_fsm.sv       ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/output_files/keypad_fsm.sv     ;         ;
+; output_files/shift_reg.sv        ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/output_files/shift_reg.sv      ;         ;
+; output_files/clock_div.sv        ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/output_files/clock_div.sv      ;         ;
+; binary2Seven_high.sv             ; yes             ; User SystemVerilog HDL File  ; /home/jasper/quartus/l2_keypadIO/binary2Seven_high.sv           ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------+---------+
 
 
 +------------------------------------------------------------+
@@ -194,20 +206,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+--------------+
 ; Resource                                    ; Usage        ;
 +---------------------------------------------+--------------+
-; Estimated Total logic elements              ; 24           ;
+; Estimated Total logic elements              ; 145          ;
 ;                                             ;              ;
-; Total combinational functions               ; 24           ;
+; Total combinational functions               ; 117          ;
 ; Logic element usage by number of LUT inputs ;              ;
-;     -- 4 input functions                    ; 0            ;
-;     -- 3 input functions                    ; 1            ;
-;     -- <=2 input functions                  ; 23           ;
+;     -- 4 input functions                    ; 41           ;
+;     -- 3 input functions                    ; 10           ;
+;     -- <=2 input functions                  ; 66           ;
 ;                                             ;              ;
 ; Logic elements by mode                      ;              ;
-;     -- normal mode                          ; 8            ;
-;     -- arithmetic mode                      ; 16           ;
+;     -- normal mode                          ; 70           ;
+;     -- arithmetic mode                      ; 47           ;
 ;                                             ;              ;
-; Total registers                             ; 20           ;
-;     -- Dedicated logic registers            ; 20           ;
+; Total registers                             ; 91           ;
+;     -- Dedicated logic registers            ; 91           ;
 ;     -- I/O registers                        ; 0            ;
 ;                                             ;              ;
 ; I/O pins                                    ; 44           ;
@@ -215,75 +227,44 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0            ;
 ;                                             ;              ;
 ; Maximum fan-out node                        ; clk50M~input ;
-; Maximum fan-out                             ; 18           ;
-; Total fan-out                               ; 136          ;
-; Average fan-out                             ; 1.03         ;
+; Maximum fan-out                             ; 49           ;
+; Total fan-out                               ; 606          ;
+; Average fan-out                             ; 2.05         ;
 +---------------------------------------------+--------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                       ;
-+----------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------+-------------+--------------+
-; Compilation Hierarchy Node       ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                  ; Entity Name ; Library Name ;
-+----------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------+-------------+--------------+
-; |keypadIO                        ; 24 (0)              ; 20 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 44   ; 0            ; 0          ; |keypadIO                                            ; keypadIO    ; work         ;
-;    |hex2sevenMX:h2sMX|           ; 24 (0)              ; 20 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|hex2sevenMX:h2sMX                          ; hex2sevenMX ; work         ;
-;       |clockLadder:clock_Ladder| ; 18 (18)             ; 18 (18)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|hex2sevenMX:h2sMX|clockLadder:clock_Ladder ; clockLadder ; work         ;
-;       |fsm:FSM_inst|             ; 6 (6)               ; 2 (2)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|hex2sevenMX:h2sMX|fsm:FSM_inst             ; fsm         ; work         ;
-+----------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------+-------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                            ;
++----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------+-------------------+--------------+
+; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                     ; Entity Name       ; Library Name ;
++----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------+-------------------+--------------+
+; |keypadIO                                    ; 117 (0)             ; 91 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 44   ; 0            ; 0          ; |keypadIO                                                                               ; keypadIO          ; work         ;
+;    |hex2sevenMX:h2sMX|                       ; 39 (1)              ; 34 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|hex2sevenMX:h2sMX                                                             ; hex2sevenMX       ; work         ;
+;       |binary2Seven_high:bin2sev_inst|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|hex2sevenMX:h2sMX|binary2Seven_high:bin2sev_inst                              ; binary2Seven_high ; work         ;
+;       |clockLadder:clock_Ladder|             ; 17 (17)             ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|hex2sevenMX:h2sMX|clockLadder:clock_Ladder                                    ; clockLadder       ; work         ;
+;       |four2one:four2one_inst|               ; 8 (8)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|hex2sevenMX:h2sMX|four2one:four2one_inst                                      ; four2one          ; work         ;
+;       |fsm:FSM_inst|                         ; 6 (6)               ; 2 (2)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|hex2sevenMX:h2sMX|fsm:FSM_inst                                                ; fsm               ; work         ;
+;       |nBitRegister:nBitRegisterSV_inst|     ; 0 (0)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst                            ; nBitRegister      ; work         ;
+;    |keypad_input:kpd_in|                     ; 78 (0)              ; 57 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|keypad_input:kpd_in                                                           ; keypad_input      ; work         ;
+;       |keypad_base:keypad_base|              ; 78 (0)              ; 41 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|keypad_input:kpd_in|keypad_base:keypad_base                                   ; keypad_base       ; work         ;
+;          |clock_div:keypad_clock_divider|    ; 50 (50)             ; 33 (33)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider    ; clock_div         ; work         ;
+;          |keypad_decoder:keypad_key_decoder| ; 12 (12)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|keypad_input:kpd_in|keypad_base:keypad_base|keypad_decoder:keypad_key_decoder ; keypad_decoder    ; work         ;
+;          |keypad_fsm:keypad_fsm|             ; 16 (16)             ; 8 (8)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm             ; keypad_fsm        ; work         ;
+;       |shift_reg:shift_reg|                  ; 0 (0)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |keypadIO|keypad_input:kpd_in|shift_reg:shift_reg                                       ; shift_reg         ; work         ;
++----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------+-------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                         ;
-+-------------------------------------------------------------------+----------------------------------------+
-; Register name                                                     ; Reason for Removal                     ;
-+-------------------------------------------------------------------+----------------------------------------+
-; shift_reg:hift_reg|out[0..15]                                     ; Stuck at GND due to stuck port clear   ;
-; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[0..15] ; Stuck at GND due to stuck port data_in ;
-; hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[18..31]         ; Lost fanout                            ;
-; Total Number of Removed Registers = 46                            ;                                        ;
-+-------------------------------------------------------------------+----------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                           ;
-+----------------------------+-------------------------+----------------------------------------------------------------+
-; Register name              ; Reason for Removal      ; Registers Removed due to This Register                         ;
-+----------------------------+-------------------------+----------------------------------------------------------------+
-; shift_reg:hift_reg|out[0]  ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[0]  ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[15] ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[15] ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[14] ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[14] ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[13] ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[13] ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[12] ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[12] ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[11] ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[11] ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[10] ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[10] ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[9]  ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[9]  ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[8]  ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[8]  ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[7]  ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[7]  ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[6]  ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[6]  ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[5]  ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[5]  ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[4]  ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[4]  ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[3]  ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[3]  ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[2]  ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[2]  ;
-;                            ; due to stuck port clear ;                                                                ;
-; shift_reg:hift_reg|out[1]  ; Stuck at GND            ; hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst|Q_latch[1]  ;
-;                            ; due to stuck port clear ;                                                                ;
-+----------------------------+-------------------------+----------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                          ;
++-----------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+; Register name                                             ; Reason for Removal                                                                              ;
++-----------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+; hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[0]      ; Merged with keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider|r_reg[0] ;
+; hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[1]      ; Merged with keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider|r_reg[1] ;
+; hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[18..31] ; Lost fanout                                                                                     ;
+; Total Number of Removed Registers = 16                    ;                                                                                                 ;
++-----------------------------------------------------------+-------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -291,24 +272,65 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 20    ;
+; Total registers                              ; 91    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 2     ;
+; Number of registers using Asynchronous Clear ; 34    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 4     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+-----------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: shift_reg:hift_reg ;
-+----------------+-------+----------------------------------------+
-; Parameter Name ; Value ; Type                                   ;
-+----------------+-------+----------------------------------------+
-; COUNT          ; 4     ; Signed Integer                         ;
-; WIDTH          ; 4     ; Signed Integer                         ;
-+----------------+-------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------+
+; 16:1               ; 4 bits    ; 40 LEs        ; 12 LEs               ; 28 LEs                 ; Yes        ; |keypadIO|keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|col[3] ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |keypadIO|hex2sevenMX:h2sMX|four2one:four2one_inst|Mux3                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: keypad_input:kpd_in ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; DIGITS         ; 4     ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider ;
++----------------+--------+-----------------------------------------------------------------------------------------------+
+; Parameter Name ; Value  ; Type                                                                                          ;
++----------------+--------+-----------------------------------------------------------------------------------------------+
+; WIDTH          ; 32     ; Signed Integer                                                                                ;
+; DIV            ; 100000 ; Signed Integer                                                                                ;
++----------------+--------+-----------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: keypad_input:kpd_in|keypad_base:keypad_base|keypad_decoder:keypad_key_decoder ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                              ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+; BASE           ; 16    ; Signed Integer                                                                                    ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: keypad_input:kpd_in|shift_reg:shift_reg ;
++----------------+-------+-------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                        ;
++----------------+-------+-------------------------------------------------------------+
+; COUNT          ; 4     ; Signed Integer                                              ;
+; WIDTH          ; 4     ; Signed Integer                                              ;
++----------------+-------+-------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -352,12 +374,43 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "shift_reg:hift_reg"                                                                                                                         ;
+; Port Connectivity Checks: "keypad_input:kpd_in|shift_reg:shift_reg"                                                                                                    ;
 +------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port ; Type  ; Severity ; Details                                                                                                                                      ;
 +------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 ; dir  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
 +------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm"                                        ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; state ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; trig  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider"                                                                  ;
++-------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                      ;
++-------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; reset ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++-------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "keypad_input:kpd_in|keypad_base:keypad_base"                                                                    ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                  ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; slow_clock  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; sense       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; valid_digit ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; inv_row     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -366,20 +419,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 44                          ;
-; cycloneiii_ff         ; 20                          ;
-;     CLR               ; 2                           ;
-;     plain             ; 18                          ;
-; cycloneiii_lcell_comb ; 27                          ;
-;     arith             ; 16                          ;
-;         2 data inputs ; 15                          ;
+; cycloneiii_ff         ; 91                          ;
+;     CLR               ; 34                          ;
+;     ENA               ; 4                           ;
+;     plain             ; 53                          ;
+; cycloneiii_lcell_comb ; 125                         ;
+;     arith             ; 47                          ;
+;         2 data inputs ; 46                          ;
 ;         3 data inputs ; 1                           ;
-;     normal            ; 11                          ;
-;         0 data inputs ; 2                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 5                           ;
+;     normal            ; 78                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 10                          ;
+;         2 data inputs ; 17                          ;
+;         3 data inputs ; 9                           ;
+;         4 data inputs ; 41                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 2.60                        ;
-; Average LUT depth     ; 1.84                        ;
+; Max LUT depth         ; 8.50                        ;
+; Average LUT depth     ; 4.46                        ;
 +-----------------------+-----------------------------+
 
 
@@ -398,7 +454,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Fri Jan 31 16:04:00 2025
+    Info: Processing started: Fri Jan 31 16:13:42 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off keypadIO -c keypadIO
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
@@ -432,30 +488,24 @@ Info (12021): Found 1 design units, including 1 entities, in source file output_
     Info (12023): Found entity 1: clock_div File: /home/jasper/quartus/l2_keypadIO/output_files/clock_div.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file binary2Seven_high.sv
     Info (12023): Found entity 1: binary2Seven_high File: /home/jasper/quartus/l2_keypadIO/binary2Seven_high.sv Line: 1
-Warning (10236): Verilog HDL Implicit Net warning at keypadIO.sv(35): created implicit net for "reset" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 35
 Info (12127): Elaborating entity "keypadIO" for the top level hierarchy
-Warning (10034): Output port "c" at keypadIO.sv(5) has no driver File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 5
+Warning (10030): Net "h2stest[9..7]" at keypadIO.sv(14) has no driver or initial value, using a default initial value '0' File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 14
 Warning (10034): Output port "testboardseg" at keypadIO.sv(8) has no driver File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 8
-Info (12128): Elaborating entity "shift_reg" for hierarchy "shift_reg:hift_reg" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 36
-Info (12128): Elaborating entity "hex2sevenMX" for hierarchy "hex2sevenMX:h2sMX" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 52
+Warning (10034): Output port "LEDR[2..0]" at keypadIO.sv(11) has no driver File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 11
+Info (12128): Elaborating entity "keypad_input" for hierarchy "keypad_input:kpd_in" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 28
+Info (12128): Elaborating entity "keypad_base" for hierarchy "keypad_input:kpd_in|keypad_base:keypad_base" File: /home/jasper/quartus/l2_keypadIO/output_files/keypad_input.sv Line: 18
+Info (12128): Elaborating entity "clock_div" for hierarchy "keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider" File: /home/jasper/quartus/l2_keypadIO/output_files/keypad_base.sv Line: 18
+Info (12128): Elaborating entity "keypad_fsm" for hierarchy "keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm" File: /home/jasper/quartus/l2_keypadIO/output_files/keypad_base.sv Line: 24
+Info (12128): Elaborating entity "keypad_decoder" for hierarchy "keypad_input:kpd_in|keypad_base:keypad_base|keypad_decoder:keypad_key_decoder" File: /home/jasper/quartus/l2_keypadIO/output_files/keypad_base.sv Line: 30
+Info (12128): Elaborating entity "shift_reg" for hierarchy "keypad_input:kpd_in|shift_reg:shift_reg" File: /home/jasper/quartus/l2_keypadIO/output_files/keypad_input.sv Line: 25
+Info (12128): Elaborating entity "hex2sevenMX" for hierarchy "hex2sevenMX:h2sMX" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 42
 Info (12128): Elaborating entity "clockLadder" for hierarchy "hex2sevenMX:h2sMX|clockLadder:clock_Ladder" File: /home/jasper/quartus/l2_keypadIO/hex2sevenMX.sv Line: 33
 Info (12128): Elaborating entity "nBitRegister" for hierarchy "hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst" File: /home/jasper/quartus/l2_keypadIO/hex2sevenMX.sv Line: 41
 Info (12128): Elaborating entity "four2one" for hierarchy "hex2sevenMX:h2sMX|four2one:four2one_inst" File: /home/jasper/quartus/l2_keypadIO/hex2sevenMX.sv Line: 52
 Info (12128): Elaborating entity "binary2Seven_high" for hierarchy "hex2sevenMX:h2sMX|binary2Seven_high:bin2sev_inst" File: /home/jasper/quartus/l2_keypadIO/hex2sevenMX.sv Line: 58
 Info (12128): Elaborating entity "fsm" for hierarchy "hex2sevenMX:h2sMX|fsm:FSM_inst" File: /home/jasper/quartus/l2_keypadIO/hex2sevenMX.sv Line: 67
-Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "c[0]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 5
-    Warning (13410): Pin "c[1]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 5
-    Warning (13410): Pin "c[2]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 5
-    Warning (13410): Pin "c[3]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 5
-    Warning (13410): Pin "seg[0]" is stuck at VCC File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 6
-    Warning (13410): Pin "seg[1]" is stuck at VCC File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 6
-    Warning (13410): Pin "seg[2]" is stuck at VCC File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 6
-    Warning (13410): Pin "seg[3]" is stuck at VCC File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 6
-    Warning (13410): Pin "seg[4]" is stuck at VCC File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 6
-    Warning (13410): Pin "seg[5]" is stuck at VCC File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 6
-    Warning (13410): Pin "seg[6]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 6
     Warning (13410): Pin "testboardseg[0]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 8
     Warning (13410): Pin "testboardseg[1]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 8
     Warning (13410): Pin "testboardseg[2]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 8
@@ -466,10 +516,6 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[0]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 11
     Warning (13410): Pin "LEDR[1]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 11
     Warning (13410): Pin "LEDR[2]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 11
-    Warning (13410): Pin "LEDR[3]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 11
-    Warning (13410): Pin "LEDR[4]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 11
-    Warning (13410): Pin "LEDR[5]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 11
-    Warning (13410): Pin "LEDR[6]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 11
     Warning (13410): Pin "LEDR[7]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 11
     Warning (13410): Pin "LEDR[8]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 11
     Warning (13410): Pin "LEDR[9]" is stuck at GND File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 11
@@ -477,25 +523,21 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17049): 14 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 10 input pin(s) that do not drive logic
+Warning (21074): Design contains 6 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "load" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 2
     Warning (15610): No output dependent on input pin "onOff" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 2
-    Warning (15610): No output dependent on input pin "r[0]" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 3
-    Warning (15610): No output dependent on input pin "r[1]" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 3
-    Warning (15610): No output dependent on input pin "r[2]" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 3
-    Warning (15610): No output dependent on input pin "r[3]" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 3
     Warning (15610): No output dependent on input pin "sw[0]" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 4
     Warning (15610): No output dependent on input pin "sw[1]" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 4
     Warning (15610): No output dependent on input pin "sw[2]" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 4
     Warning (15610): No output dependent on input pin "sw[3]" File: /home/jasper/quartus/l2_keypadIO/keypadIO.sv Line: 4
-Info (21057): Implemented 68 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 220 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
     Info (21059): Implemented 32 output pins
-    Info (21061): Implemented 24 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 45 warnings
-    Info: Peak virtual memory: 440 megabytes
-    Info: Processing ended: Fri Jan 31 16:04:06 2025
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:14
+    Info (21061): Implemented 176 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 26 warnings
+    Info: Peak virtual memory: 457 megabytes
+    Info: Processing ended: Fri Jan 31 16:13:47 2025
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:11
 
 

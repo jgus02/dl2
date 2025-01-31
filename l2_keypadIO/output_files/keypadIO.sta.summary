@@ -3,72 +3,252 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk50M'
-Slack : -2.021
-TNS   : -20.016
+Slack : -6.733
+TNS   : -134.050
+
+Type  : Slow 1200mV 85C Model Setup 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : -4.311
+TNS   : -69.503
+
+Type  : Slow 1200mV 85C Model Setup 'rst'
+Slack : -2.420
+TNS   : -34.009
+
+Type  : Slow 1200mV 85C Model Setup 'keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider|clk_track'
+Slack : -2.084
+TNS   : -15.431
 
 Type  : Slow 1200mV 85C Model Setup 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
-Slack : 0.108
+Slack : 0.129
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
 Slack : 0.342
 TNS   : 0.000
 
+Type  : Slow 1200mV 85C Model Hold 'keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider|clk_track'
+Slack : 0.378
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : 0.441
+TNS   : 0.000
+
 Type  : Slow 1200mV 85C Model Hold 'clk50M'
-Slack : 0.356
+Slack : 0.621
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'rst'
+Slack : 1.959
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : -3.535
+TNS   : -101.293
+
+Type  : Slow 1200mV 85C Model Recovery 'rst'
+Slack : -1.551
+TNS   : -24.424
+
+Type  : Slow 1200mV 85C Model Recovery 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : -0.163
+TNS   : -0.326
+
+Type  : Slow 1200mV 85C Model Removal 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : 0.216
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : 0.262
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'rst'
+Slack : 1.334
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk50M'
 Slack : -3.000
-TNS   : -28.254
+TNS   : -71.747
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'rst'
+Slack : -3.000
+TNS   : -25.448
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : -1.403
+TNS   : -44.896
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider|clk_track'
+Slack : -1.403
+TNS   : -11.224
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
 Slack : -1.403
 TNS   : -2.806
 
 Type  : Slow 1200mV 0C Model Setup 'clk50M'
-Slack : -1.708
-TNS   : -16.399
+Slack : -6.081
+TNS   : -116.342
+
+Type  : Slow 1200mV 0C Model Setup 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : -4.009
+TNS   : -63.623
+
+Type  : Slow 1200mV 0C Model Setup 'rst'
+Slack : -2.209
+TNS   : -30.515
+
+Type  : Slow 1200mV 0C Model Setup 'keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider|clk_track'
+Slack : -1.943
+TNS   : -14.121
 
 Type  : Slow 1200mV 0C Model Setup 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
-Slack : 0.181
+Slack : 0.201
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
-Slack : 0.307
+Slack : 0.306
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider|clk_track'
+Slack : 0.339
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : 0.409
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clk50M'
-Slack : 0.322
+Slack : 0.575
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'rst'
+Slack : 1.855
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : -3.383
+TNS   : -93.468
+
+Type  : Slow 1200mV 0C Model Recovery 'rst'
+Slack : -1.551
+TNS   : -24.458
+
+Type  : Slow 1200mV 0C Model Recovery 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : -0.267
+TNS   : -0.534
+
+Type  : Slow 1200mV 0C Model Removal 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : 0.220
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : 0.249
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'rst'
+Slack : 1.136
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk50M'
 Slack : -3.000
-TNS   : -28.254
+TNS   : -71.747
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'rst'
+Slack : -3.000
+TNS   : -25.448
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : -1.403
+TNS   : -44.896
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider|clk_track'
+Slack : -1.403
+TNS   : -11.224
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
 Slack : -1.403
 TNS   : -2.806
 
 Type  : Fast 1200mV 0C Model Setup 'clk50M'
-Slack : -0.898
-TNS   : -0.938
+Slack : -2.226
+TNS   : -29.608
+
+Type  : Fast 1200mV 0C Model Setup 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : -1.866
+TNS   : -29.354
+
+Type  : Fast 1200mV 0C Model Setup 'keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider|clk_track'
+Slack : -0.652
+TNS   : -4.018
+
+Type  : Fast 1200mV 0C Model Setup 'rst'
+Slack : -0.459
+TNS   : -6.079
 
 Type  : Fast 1200mV 0C Model Setup 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
-Slack : 0.614
+Slack : 0.625
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
 Slack : 0.147
 TNS   : 0.000
 
+Type  : Fast 1200mV 0C Model Hold 'keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider|clk_track'
+Slack : 0.166
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : 0.166
+TNS   : 0.000
+
 Type  : Fast 1200mV 0C Model Hold 'clk50M'
-Slack : 0.153
+Slack : 0.238
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'rst'
+Slack : 0.607
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : -1.607
+TNS   : -45.263
+
+Type  : Fast 1200mV 0C Model Recovery 'rst'
+Slack : -0.169
+TNS   : -2.560
+
+Type  : Fast 1200mV 0C Model Recovery 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : 0.498
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : 0.155
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : 0.322
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'rst'
+Slack : 0.579
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk50M'
 Slack : -3.000
-TNS   : -21.710
+TNS   : -53.827
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'rst'
+Slack : -3.000
+TNS   : -19.048
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm|state[0]'
+Slack : -1.000
+TNS   : -32.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider|clk_track'
+Slack : -1.000
+TNS   : -8.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
 Slack : -1.000

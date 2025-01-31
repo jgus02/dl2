@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Fri Jan 31 16:04:05 2025
+Analysis & Synthesis Status : Successful - Fri Jan 31 16:13:47 2025
 Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 Revision Name : keypadIO
 Top-level Entity Name : keypadIO
 Family : MAX 10
-Total logic elements : 24
-    Total combinational functions : 24
-    Dedicated logic registers : 20
-Total registers : 20
+Total logic elements : 145
+    Total combinational functions : 117
+    Dedicated logic registers : 91
+Total registers : 91
 Total pins : 44
 Total virtual pins : 0
 Total memory bits : 0

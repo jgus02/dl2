@@ -11,11 +11,11 @@ module keypadIO (
 );
 
   wire [15:0] hex_chars;
-  /*wire [15:0] h2stest ;
+  wire [15:0] h2stest ;
   assign LEDR[9:3] = h2stest[9:3];
-  wire trig;*/
+  wire trig;
 
-/*  keypad_input kpd_in ( // Depends: keypad_base(clock_div, keypad_fsm, keypad_decoder), shift_reg
+  keypad_input kpd_in ( // Depends: keypad_base(clock_div, keypad_fsm, keypad_decoder), shift_reg
     .clk(clk50M),   //input clk,
     .reset(rst),    //input reset,
     .row(r),        //input [3:0] row,
@@ -25,22 +25,12 @@ module keypadIO (
     // Debug
     .value(h2stest[6:3]),                //output [3:0] value,
     .trig(trig)                //output trig
-);*/
-
-
-  shift_reg #(4) hift_reg (
-    .trig(~load),
-    .in(sw[3:0]),
-    .out(hex_chars),
-    .reset(reset)
-  );
-  
-  assign LEDR[9:0] = hex_chars[9:0];
+);
   
   hex2sevenMX h2sMX (
     .Clock(clk50M),
     .Reset(rst),
-    .Load(onOff),
+    .Load(trig),
     .OnOff(1'b1), 
     .HEX3(hex_chars[15:12]), 
     .HEX2(hex_chars[11:8]), 
