@@ -1,0 +1,44 @@
+module knightrider (
+	input clk50M,
+	input onOff,
+	input rateToggle,
+	
+	output [9:0] LEDR,
+	output [6:0] HEX0
+) ;
+
+	assign LEDR[9:0] = 10'b0101010101;
+	wire rate;
+	reg [3:0] count;
+	reg countUp;
+	reg enable;
+	
+		
+	divToggle dt_inst (
+		.clk50M(clk50M),
+		.clr(~enable),
+		.toggle(rateToggle),
+		
+		.rate(rate)
+	) ;
+	
+	always_ff @ (posedge rate)
+	begin
+		if(count[3:0] == 4'd9) countUp <= ~countUp;
+	end
+	
+	binaryUpDown bud_inst (
+		.CLK(rate),
+		.CLEAR(enable),
+		.UP(countUp),
+		
+		.COUNT(count)
+	) ;
+	
+	onOffToggle oot_inst (
+		.onOff(onOff),
+		
+		.OUT(enable)
+	) ;
+	
+ endmodule

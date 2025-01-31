@@ -1,0 +1,551 @@
+Analysis & Synthesis report for knightrider
+Sun Jan 26 22:46:55 2025
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |knightrider|divToggle:dt_inst|state
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: divToggle:dt_inst
+ 14. Parameter Settings for User Entity Instance: divToggle:dt_inst|divideXN:div1000_a
+ 15. Parameter Settings for User Entity Instance: divToggle:dt_inst|divideXN:div1000_b
+ 16. Parameter Settings for User Entity Instance: divToggle:dt_inst|divideXN:div2_a
+ 17. Parameter Settings for User Entity Instance: divToggle:dt_inst|divideXN:div2_b
+ 18. Parameter Settings for User Entity Instance: divToggle:dt_inst|divideXN:div2_c
+ 19. Parameter Settings for User Entity Instance: binaryUpDown:bud_inst
+ 20. Parameter Settings for User Entity Instance: onOffToggle:oot_inst
+ 21. Port Connectivity Checks: "binaryUpDown:bud_inst"
+ 22. Port Connectivity Checks: "divToggle:dt_inst|divideXN:div2_c"
+ 23. Port Connectivity Checks: "divToggle:dt_inst|divideXN:div2_b"
+ 24. Port Connectivity Checks: "divToggle:dt_inst|divideXN:div2_a"
+ 25. Port Connectivity Checks: "divToggle:dt_inst|divideXN:div1000_b"
+ 26. Port Connectivity Checks: "divToggle:dt_inst|divideXN:div1000_a"
+ 27. Port Connectivity Checks: "divToggle:dt_inst"
+ 28. Post-Synthesis Netlist Statistics for Top Partition
+ 29. Elapsed Time Per Partition
+ 30. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Jan 26 22:46:55 2025          ;
+; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
+; Revision Name                      ; knightrider                                    ;
+; Top-level Entity Name              ; knightrider                                    ;
+; Family                             ; MAX 10                                         ;
+; Total logic elements               ; 75                                             ;
+;     Total combinational functions  ; 73                                             ;
+;     Dedicated logic registers      ; 51                                             ;
+; Total registers                    ; 51                                             ;
+; Total pins                         ; 20                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
+; UFM blocks                         ; 0                                              ;
+; ADC blocks                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C7G     ;                    ;
+; Top-level entity name                                            ; knightrider        ; knightrider        ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 10          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 10          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-10        ;   0.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                            ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                        ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------+---------+
+; onOffToggle.sv                   ; yes             ; User SystemVerilog HDL File  ; /home/jasper/Quartus/l1_knightrider/onOffToggle.sv  ;         ;
+; knightrider.sv                   ; yes             ; User SystemVerilog HDL File  ; /home/jasper/Quartus/l1_knightrider/knightrider.sv  ;         ;
+; divToggle.sv                     ; yes             ; User SystemVerilog HDL File  ; /home/jasper/Quartus/l1_knightrider/divToggle.sv    ;         ;
+; divideXN.sv                      ; yes             ; User SystemVerilog HDL File  ; /home/jasper/Quartus/l1_knightrider/divideXN.sv     ;         ;
+; binaryUpDown.sv                  ; yes             ; User SystemVerilog HDL File  ; /home/jasper/Quartus/l1_knightrider/binaryUpDown.sv ;         ;
+; binary2Seven.sv                  ; yes             ; User SystemVerilog HDL File  ; /home/jasper/Quartus/l1_knightrider/binary2Seven.sv ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------+---------+
+
+
++-------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary           ;
++---------------------------------------------+---------+
+; Resource                                    ; Usage   ;
++---------------------------------------------+---------+
+; Estimated Total logic elements              ; 75      ;
+;                                             ;         ;
+; Total combinational functions               ; 73      ;
+; Logic element usage by number of LUT inputs ;         ;
+;     -- 4 input functions                    ; 21      ;
+;     -- 3 input functions                    ; 15      ;
+;     -- <=2 input functions                  ; 37      ;
+;                                             ;         ;
+; Logic elements by mode                      ;         ;
+;     -- normal mode                          ; 52      ;
+;     -- arithmetic mode                      ; 21      ;
+;                                             ;         ;
+; Total registers                             ; 51      ;
+;     -- Dedicated logic registers            ; 51      ;
+;     -- I/O registers                        ; 0       ;
+;                                             ;         ;
+; I/O pins                                    ; 20      ;
+;                                             ;         ;
+; Embedded Multiplier 9-bit elements          ; 0       ;
+;                                             ;         ;
+; Maximum fan-out node                        ; countUp ;
+; Maximum fan-out                             ; 15      ;
+; Total fan-out                               ; 379     ;
+; Average fan-out                             ; 2.31    ;
++---------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                               ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------+--------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                               ; Entity Name  ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------+--------------+--------------+
+; |knightrider               ; 73 (5)              ; 51 (1)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 20   ; 0            ; 0          ; |knightrider                                      ; knightrider  ; work         ;
+;    |binary2Seven:b2s|      ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |knightrider|binary2Seven:b2s                     ; binary2Seven ; work         ;
+;    |binaryUpDown:bud_inst| ; 19 (19)             ; 14 (14)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |knightrider|binaryUpDown:bud_inst                ; binaryUpDown ; work         ;
+;    |divToggle:dt_inst|     ; 41 (4)              ; 35 (4)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |knightrider|divToggle:dt_inst                    ; divToggle    ; work         ;
+;       |divideXN:div1000_a| ; 14 (14)             ; 11 (11)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |knightrider|divToggle:dt_inst|divideXN:div1000_a ; divideXN     ; work         ;
+;       |divideXN:div1000_b| ; 14 (14)             ; 11 (11)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |knightrider|divToggle:dt_inst|divideXN:div1000_b ; divideXN     ; work         ;
+;       |divideXN:div2_a|    ; 2 (2)               ; 2 (2)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |knightrider|divToggle:dt_inst|divideXN:div2_a    ; divideXN     ; work         ;
+;       |divideXN:div2_b|    ; 2 (2)               ; 2 (2)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |knightrider|divToggle:dt_inst|divideXN:div2_b    ; divideXN     ; work         ;
+;       |divideXN:div2_c|    ; 5 (5)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |knightrider|divToggle:dt_inst|divideXN:div2_c    ; divideXN     ; work         ;
+;    |onOffToggle:oot_inst|  ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |knightrider|onOffToggle:oot_inst                 ; onOffToggle  ; work         ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------+--------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------+
+; State Machine - |knightrider|divToggle:dt_inst|state           ;
++------------+------------+------------+------------+------------+
+; Name       ; state.SPD3 ; state.SPD2 ; state.SPD1 ; state.SPD0 ;
++------------+------------+------------+------------+------------+
+; state.SPD0 ; 0          ; 0          ; 0          ; 0          ;
+; state.SPD1 ; 0          ; 0          ; 1          ; 1          ;
+; state.SPD2 ; 0          ; 1          ; 0          ; 1          ;
+; state.SPD3 ; 1          ; 0          ; 0          ; 1          ;
++------------+------------+------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                  ;
++--------------------------------------------+----------------------------------------+
+; Register name                              ; Reason for Removal                     ;
++--------------------------------------------+----------------------------------------+
+; divToggle:dt_inst|state~2                  ; Lost fanout                            ;
+; divToggle:dt_inst|state~3                  ; Lost fanout                            ;
+; divToggle:dt_inst|divideXN:div2_b|COUNT[1] ; Stuck at GND due to stuck port data_in ;
+; divToggle:dt_inst|divideXN:div2_a|COUNT[1] ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 4      ;                                        ;
++--------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 51    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 20    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 10    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; binaryUpDown:bud_inst|shift_reg[0]     ; 3       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |knightrider|binaryUpDown:bud_inst|shift_reg[1]            ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |knightrider|divToggle:dt_inst|divideXN:div2_c|COUNT[3]    ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |knightrider|divToggle:dt_inst|divideXN:div1000_b|COUNT[7] ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |knightrider|divToggle:dt_inst|divideXN:div1000_a|COUNT[9] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: divToggle:dt_inst ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; SPD0           ; 00    ; Unsigned Binary                       ;
+; SPD1           ; 01    ; Unsigned Binary                       ;
+; SPD2           ; 10    ; Unsigned Binary                       ;
+; SPD3           ; 11    ; Unsigned Binary                       ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: divToggle:dt_inst|divideXN:div1000_a ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; N              ; 1000  ; Signed Integer                                           ;
+; M              ; 10    ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: divToggle:dt_inst|divideXN:div1000_b ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; N              ; 1000  ; Signed Integer                                           ;
+; M              ; 10    ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: divToggle:dt_inst|divideXN:div2_a ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; N              ; 2     ; Signed Integer                                        ;
+; M              ; 2     ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: divToggle:dt_inst|divideXN:div2_b ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; N              ; 2     ; Signed Integer                                        ;
+; M              ; 2     ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: divToggle:dt_inst|divideXN:div2_c ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; N              ; 4     ; Signed Integer                                        ;
+; M              ; 4     ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: binaryUpDown:bud_inst ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; N              ; 4     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: onOffToggle:oot_inst ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; ON             ; 1     ; Unsigned Binary                          ;
+; OFF            ; 0     ; Unsigned Binary                          ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "binaryUpDown:bud_inst" ;
++-------+-------+----------+------------------------+
+; Port  ; Type  ; Severity ; Details                ;
++-------+-------+----------+------------------------+
+; CLEAR ; Input ; Info     ; Stuck at VCC           ;
++-------+-------+----------+------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "divToggle:dt_inst|divideXN:div2_c"                                                                        ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; COUNT ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "divToggle:dt_inst|divideXN:div2_b"                                                                        ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; COUNT ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "divToggle:dt_inst|divideXN:div2_a"                                                                        ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; COUNT ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "divToggle:dt_inst|divideXN:div1000_b"                                                                     ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; COUNT ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "divToggle:dt_inst|divideXN:div1000_a"                                                                     ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; COUNT ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "divToggle:dt_inst" ;
++------+-------+----------+---------------------+
+; Port ; Type  ; Severity ; Details             ;
++------+-------+----------+---------------------+
+; clr  ; Input ; Info     ; Stuck at VCC        ;
++------+-------+----------+---------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 20                          ;
+; cycloneiii_ff         ; 51                          ;
+;     ENA               ; 10                          ;
+;     SLD               ; 20                          ;
+;     plain             ; 21                          ;
+; cycloneiii_lcell_comb ; 75                          ;
+;     arith             ; 21                          ;
+;         2 data inputs ; 19                          ;
+;         3 data inputs ; 2                           ;
+;     normal            ; 54                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 6                           ;
+;         3 data inputs ; 13                          ;
+;         4 data inputs ; 21                          ;
+;                       ;                             ;
+; Max LUT depth         ; 2.00                        ;
+; Average LUT depth     ; 1.55                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+    Info: Processing started: Sun Jan 26 22:46:50 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off knightrider -c knightrider
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file onOffToggle.sv
+    Info (12023): Found entity 1: onOffToggle File: /home/jasper/Quartus/l1_knightrider/onOffToggle.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file knightrider.sv
+    Info (12023): Found entity 1: knightrider File: /home/jasper/Quartus/l1_knightrider/knightrider.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file divToggle.sv
+    Info (12023): Found entity 1: divToggle File: /home/jasper/Quartus/l1_knightrider/divToggle.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file divideXN.sv
+    Info (12023): Found entity 1: divideXN File: /home/jasper/Quartus/l1_knightrider/divideXN.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file binaryUpDown.sv
+    Info (12023): Found entity 1: binaryUpDown File: /home/jasper/Quartus/l1_knightrider/binaryUpDown.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file binary2Seven.sv
+    Info (12023): Found entity 1: binary2Seven File: /home/jasper/Quartus/l1_knightrider/binary2Seven.sv Line: 1
+Info (12127): Elaborating entity "knightrider" for the top level hierarchy
+Info (12128): Elaborating entity "divToggle" for hierarchy "divToggle:dt_inst" File: /home/jasper/Quartus/l1_knightrider/knightrider.sv Line: 23
+Info (12128): Elaborating entity "divideXN" for hierarchy "divToggle:dt_inst|divideXN:div1000_a" File: /home/jasper/Quartus/l1_knightrider/divToggle.sv Line: 19
+Warning (10230): Verilog HDL assignment warning at divideXN.sv(11): truncated value with size 32 to match size of target (10) File: /home/jasper/Quartus/l1_knightrider/divideXN.sv Line: 11
+Info (12128): Elaborating entity "divideXN" for hierarchy "divToggle:dt_inst|divideXN:div2_a" File: /home/jasper/Quartus/l1_knightrider/divToggle.sv Line: 31
+Warning (10230): Verilog HDL assignment warning at divideXN.sv(11): truncated value with size 32 to match size of target (2) File: /home/jasper/Quartus/l1_knightrider/divideXN.sv Line: 11
+Info (12128): Elaborating entity "divideXN" for hierarchy "divToggle:dt_inst|divideXN:div2_c" File: /home/jasper/Quartus/l1_knightrider/divToggle.sv Line: 43
+Warning (10230): Verilog HDL assignment warning at divideXN.sv(11): truncated value with size 32 to match size of target (4) File: /home/jasper/Quartus/l1_knightrider/divideXN.sv Line: 11
+Info (12128): Elaborating entity "binaryUpDown" for hierarchy "binaryUpDown:bud_inst" File: /home/jasper/Quartus/l1_knightrider/knightrider.sv Line: 37
+Info (12128): Elaborating entity "onOffToggle" for hierarchy "onOffToggle:oot_inst" File: /home/jasper/Quartus/l1_knightrider/knightrider.sv Line: 43
+Info (12128): Elaborating entity "binary2Seven" for hierarchy "binary2Seven:b2s" File: /home/jasper/Quartus/l1_knightrider/knightrider.sv Line: 48
+Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 2 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 97 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 17 output pins
+    Info (21061): Implemented 77 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 448 megabytes
+    Info: Processing ended: Sun Jan 26 22:46:55 2025
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:11
+
+

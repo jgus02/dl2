@@ -1,0 +1,7 @@
+module clockLadder #( parameter W = 8, parameter SEL = W ) ( 
+  input CLK, CLR,
+  output OUT,
+  output [W-1:0] LADDER
+) ;
+
+

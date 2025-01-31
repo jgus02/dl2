@@ -1,0 +1,7 @@
+
+State Machine - |knightrider|divToggle:dt_inst|state
+Name state.SPD3 state.SPD2 state.SPD1 state.SPD0 
+state.SPD0 0 0 0 0 
+state.SPD1 0 0 1 1 
+state.SPD2 0 1 0 1 
+state.SPD3 1 0 0 1 

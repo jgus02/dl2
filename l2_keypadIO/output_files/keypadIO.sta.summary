@@ -1,0 +1,77 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk50M'
+Slack : -2.021
+TNS   : -20.016
+
+Type  : Slow 1200mV 85C Model Setup 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : 0.108
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : 0.342
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clk50M'
+Slack : 0.356
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk50M'
+Slack : -3.000
+TNS   : -28.254
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : -1.403
+TNS   : -2.806
+
+Type  : Slow 1200mV 0C Model Setup 'clk50M'
+Slack : -1.708
+TNS   : -16.399
+
+Type  : Slow 1200mV 0C Model Setup 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : 0.181
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : 0.307
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clk50M'
+Slack : 0.322
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk50M'
+Slack : -3.000
+TNS   : -28.254
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : -1.403
+TNS   : -2.806
+
+Type  : Fast 1200mV 0C Model Setup 'clk50M'
+Slack : -0.898
+TNS   : -0.938
+
+Type  : Fast 1200mV 0C Model Setup 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : 0.614
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : 0.147
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk50M'
+Slack : 0.153
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk50M'
+Slack : -3.000
+TNS   : -21.710
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'hex2sevenMX:h2sMX|clockLadder:clock_Ladder|ladder[17]'
+Slack : -1.000
+TNS   : -2.000
+
+------------------------------------------------------------

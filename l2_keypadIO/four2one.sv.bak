@@ -1,0 +1,8 @@
+  module four2one #( parameter N = 1 ) (
+    input [1:0] SEL, // input A_sig
+    input [N-1:0] D0,
+    input [N-1:0] D1,
+    input [N-1:0] D2,
+    input [N-1:0] D3,
+    output out
+  );

@@ -1,0 +1,66 @@
+module divToggle (
+	input toggle,
+	input clk50M,
+	input clr,
+	
+	output rate
+) ;
+
+	wire clk50k;
+	wire clk100;
+	wire clk50;
+	wire clk25;
+	wire clk12o5;
+	
+	divideXN #( .N(1000), .M(10) ) div1000 (
+		.CLK(clk50M),
+		.CLEAR(clr),
+		.OUT(clk50k)
+	) ;
+	
+	divideXN #( .N(500), .M(9) ) div500 (
+		.CLK(clk50k),
+		.CLEAR(clr),
+		.OUT(clk100)
+	) ;
+	
+	divideXN #( .N(2), .M(2) ) div2_a (
+		.CLK(clk100),
+		.CLEAR(clr),
+		.OUT(clk50)
+	) ;
+	
+	divideXN #( .N(2), .M(2) ) div2_b (
+		.CLK(clk50),
+		.CLEAR(clr),
+		.OUT(clk25)
+	) ;
+	
+	divideXN #( .N(2), .M(2) ) div2_c (
+		.CLK(clk25),
+		.CLEAR(clr),
+		.OUT(clk12o5)
+	) ;
+	
+	reg [1:0] state;
+	reg [1:0] nextstate;
+	
+	parameter SPD0=2'b00,SPD1=2'b01,SPD2=2'b10,SPD3=2'b11;
+	
+	always_ff @ (posedge clk50M)
+		state <= nextstate;
+
+	always_comb
+		case(state)
+			SPD0: nextstate <= SPD1; 
+			SPD1: nextstate <= SPD2;
+			SPD2: nextstate <= SPD3;
+			SPD3: nextstate <= SPD0;
+		endcase
+		
+	assign rate = 	(state == SPD0) ? clk100 :
+					  ((state == SPD1) ? clk50  :
+					  ((state == SPD2) ? clk25  :
+	                                 clk12o5));
+endmodule
+		

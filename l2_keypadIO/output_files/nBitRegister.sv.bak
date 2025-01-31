@@ -1,0 +1,25 @@
+module nBitRegisterSV #(parameter W = 4) (
+  input [W-1:0] D,
+  input CLK,
+  input CLR,
+  output [W-1:0] Q
+);
+  
+  reg [W-1:0] Q_latch;
+  
+  always_ff @ (negedge CLK)
+  begin
+    if(CLR == 1'b0) Q_latch <= 0;
+    else Q_latch <= D;
+  end
+
+
+
+//  //PIPO register
+//  nBitRegisterSV #(16) nBitRegisterSV_inst (
+ //   .D({HEX3,HEX2,HEX1,HEX0}) , // input [N-1:0] D_sig
+  //  .CLK(Load) , // input CLK_sig
+ //   .CLR(Reset) , // input CLR_sig
+ //   .Q(MUXin) // output [N-1:0] Q_sig
+ // );
+  //
