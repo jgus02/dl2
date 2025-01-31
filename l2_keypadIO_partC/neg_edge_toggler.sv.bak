@@ -1,0 +1,11 @@
+module neg_edge_toggler (
+  input sig,
+  output edge
+);
+  
+  reg sig_prev;
+  reg edge;
+
+  always_ff @ (negedge sig)
+    if(sig_prev ~= sig) 
+endmodule
