@@ -1,0 +1,14 @@
+module RegCarryLookAddSub (
+  input clk50M, rst, load, onOff, 
+  input [3:0] r,
+  input [3:0] sw,
+  output [3:0] c,
+  output [6:0] seg,
+  output [3:0] cat,
+  output [6:0] testboardseg,
+  output [9:0] LEDR
+); 
+
+
+  keypadIO keypad (
+  );

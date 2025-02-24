@@ -1,0 +1,144 @@
+Flow report for RegCarryLookAddSub
+Fri Feb 14 22:14:57 2025
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Flow Summary                                                                        ;
++------------------------------------+------------------------------------------------+
+; Flow Status                        ; Successful - Fri Feb 14 22:14:57 2025          ;
+; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
+; Revision Name                      ; RegCarryLookAddSub                             ;
+; Top-level Entity Name              ; AddSub_IO                                      ;
+; Family                             ; MAX 10                                         ;
+; Device                             ; 10M50DAF484C7G                                 ;
+; Timing Models                      ; Final                                          ;
+; Total logic elements               ; 154 / 49,760 ( < 1 % )                         ;
+;     Total combinational functions  ; 132 / 49,760 ( < 1 % )                         ;
+;     Dedicated logic registers      ; 93 / 49,760 ( < 1 % )                          ;
+; Total registers                    ; 93                                             ;
+; Total pins                         ; 42 / 360 ( 12 % )                              ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0 / 1,677,312 ( 0 % )                          ;
+; Embedded Multiplier 9-bit elements ; 0 / 288 ( 0 % )                                ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                                  ;
+; UFM blocks                         ; 0 / 1 ( 0 % )                                  ;
+; ADC blocks                         ; 0 / 2 ( 0 % )                                  ;
++------------------------------------+------------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 02/14/2025 22:11:56 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; RegCarryLookAddSub  ;
++-------------------+---------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                    ;
++-------------------------------------+----------------------------------------+--------------------+-------------+-----------------------------------+
+; Assignment Name                     ; Value                                  ; Default Value      ; Entity Name ; Section Id                        ;
++-------------------------------------+----------------------------------------+--------------------+-------------+-----------------------------------+
+; COMPILER_SIGNATURE_ID               ; 710089995339.173959271621854           ; --                 ; --          ; --                                ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                 ; --          ; eda_board_design_timing           ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                 ; --          ; eda_board_design_boundary_scan    ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                 ; --          ; eda_board_design_signal_integrity ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                 ; --          ; eda_board_design_symbol           ;
+; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --                 ; --          ; eda_simulation                    ;
+; EDA_SIMULATION_TOOL                 ; Questa Intel FPGA (Verilog)            ; <None>             ; --          ; --                                ;
+; EDA_TIME_SCALE                      ; 1 ps                                   ; --                 ; --          ; eda_simulation                    ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --                 ; --          ; --                                ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --                 ; --          ; --                                ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --                 ; AddSub_IO   ; Top                               ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --                 ; AddSub_IO   ; Top                               ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --                 ; AddSub_IO   ; Top                               ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --                 ; --          ; --                                ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --                 ; --          ; --                                ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --                 ; --          ; --                                ;
+; TOP_LEVEL_ENTITY                    ; AddSub_IO                              ; RegCarryLookAddSub ; --          ; --                                ;
++-------------------------------------+----------------------------------------+--------------------+-------------+-----------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:05     ; 1.0                     ; 456 MB              ; 00:00:12                           ;
+; Fitter               ; 00:00:06     ; 1.1                     ; 1497 MB             ; 00:00:10                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 378 MB              ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:01     ; 1.2                     ; 569 MB              ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 580 MB              ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 580 MB              ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 589 MB              ; 00:00:00                           ;
+; Total                ; 00:00:13     ; --                      ; --                  ; 00:00:24                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                                    ;
++----------------------+------------------+--------------------+--------------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name            ; OS Version         ; Processor type ;
++----------------------+------------------+--------------------+--------------------+----------------+
+; Analysis & Synthesis ; yapitude5530     ; \S{PRETTY_NAME} \r ; \S{PRETTY_NAME} \r ; x86_64         ;
+; Fitter               ; yapitude5530     ; \S{PRETTY_NAME} \r ; \S{PRETTY_NAME} \r ; x86_64         ;
+; Assembler            ; yapitude5530     ; \S{PRETTY_NAME} \r ; \S{PRETTY_NAME} \r ; x86_64         ;
+; Timing Analyzer      ; yapitude5530     ; \S{PRETTY_NAME} \r ; \S{PRETTY_NAME} \r ; x86_64         ;
+; EDA Netlist Writer   ; yapitude5530     ; \S{PRETTY_NAME} \r ; \S{PRETTY_NAME} \r ; x86_64         ;
+; EDA Netlist Writer   ; yapitude5530     ; \S{PRETTY_NAME} \r ; \S{PRETTY_NAME} \r ; x86_64         ;
+; EDA Netlist Writer   ; yapitude5530     ; \S{PRETTY_NAME} \r ; \S{PRETTY_NAME} \r ; x86_64         ;
++----------------------+------------------+--------------------+--------------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off regcarrylookaddsub -c RegCarryLookAddSub
+quartus_fit --read_settings_files=off --write_settings_files=off regcarrylookaddsub -c RegCarryLookAddSub
+quartus_asm --read_settings_files=off --write_settings_files=off regcarrylookaddsub -c RegCarryLookAddSub
+quartus_sta regcarrylookaddsub -c RegCarryLookAddSub
+quartus_eda --read_settings_files=off --write_settings_files=off regcarrylookaddsub -c RegCarryLookAddSub
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off regcarrylookaddsub -c RegCarryLookAddSub --vector_source=/home/jasper/quartus/l3_regcarrylookaddsub/Waveform.vwf --testbench_file=/home/jasper/quartus/l3_regcarrylookaddsub/simulation/qsim/Waveform.vwf.vt
+quartus_eda --write_settings_files=off --simulation=on --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory=/home/jasper/quartus/l3_regcarrylookaddsub/simulation/qsim/ regcarrylookaddsub -c RegCarryLookAddSub
+
+
+

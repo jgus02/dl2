@@ -1,0 +1,8 @@
+module cla_flags (
+  input [3:0] R,
+  output V,
+  output N,
+  output Z
+);
+
+  assign Z = 

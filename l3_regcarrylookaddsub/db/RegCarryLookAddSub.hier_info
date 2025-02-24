@@ -1,0 +1,642 @@
+|AddSub_IO
+clk50M => clk50M.IN2
+rst => rst.IN3
+Clock => Clock.IN3
+r[0] => r[0].IN1
+r[1] => r[1].IN1
+r[2] => r[2].IN1
+r[3] => r[3].IN1
+sw[0] => sw[0].IN1
+sw[1] => sw[1].IN1
+sw[2] => ~NO_FANOUT~
+sw[3] => ~NO_FANOUT~
+sw[4] => ~NO_FANOUT~
+sw[5] => ~NO_FANOUT~
+sw[6] => ~NO_FANOUT~
+sw[7] => ~NO_FANOUT~
+sw[8] => ~NO_FANOUT~
+sw[9] => ~NO_FANOUT~
+c[0] <= keypad_input:kpd_in.col
+c[1] <= keypad_input:kpd_in.col
+c[2] <= keypad_input:kpd_in.col
+c[3] <= keypad_input:kpd_in.col
+seg[0] <= hex2sevenMX:h2sMX.seg
+seg[1] <= hex2sevenMX:h2sMX.seg
+seg[2] <= hex2sevenMX:h2sMX.seg
+seg[3] <= hex2sevenMX:h2sMX.seg
+seg[4] <= hex2sevenMX:h2sMX.seg
+seg[5] <= hex2sevenMX:h2sMX.seg
+seg[6] <= hex2sevenMX:h2sMX.seg
+cat[0] <= hex2sevenMX:h2sMX.cat
+cat[1] <= hex2sevenMX:h2sMX.cat
+cat[2] <= hex2sevenMX:h2sMX.cat
+cat[3] <= hex2sevenMX:h2sMX.cat
+LEDR[0] <= CarryLookAhead_AddSub:cla.CCout
+LEDR[1] <= CarryLookAhead_AddSub:cla.CCout
+LEDR[2] <= CarryLookAhead_AddSub:cla.CCout
+LEDR[3] <= CarryLookAhead_AddSub:cla.CCout
+LEDR[4] <= <GND>
+LEDR[5] <= <GND>
+LEDR[6] <= keypad_char[0].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[7] <= keypad_char[1].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[8] <= keypad_char[2].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[9] <= keypad_char[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|keypad_input:kpd_in
+clk => clk.IN1
+reset => reset.IN1
+row[0] => row[0].IN1
+row[1] => row[1].IN1
+row[2] => row[2].IN1
+row[3] => row[3].IN1
+col[0] <= keypad_base:keypad_base.col
+col[1] <= keypad_base:keypad_base.col
+col[2] <= keypad_base:keypad_base.col
+col[3] <= keypad_base:keypad_base.col
+out[0] <= nBitRegister:in_reg.Q
+out[1] <= nBitRegister:in_reg.Q
+out[2] <= nBitRegister:in_reg.Q
+out[3] <= nBitRegister:in_reg.Q
+value[0] <= value[0].DB_MAX_OUTPUT_PORT_TYPE
+value[1] <= value[1].DB_MAX_OUTPUT_PORT_TYPE
+value[2] <= value[2].DB_MAX_OUTPUT_PORT_TYPE
+value[3] <= value[3].DB_MAX_OUTPUT_PORT_TYPE
+trig <= keypad_base:keypad_base.valid
+
+
+|AddSub_IO|keypad_input:kpd_in|keypad_base:keypad_base
+clk => clk.IN1
+row[0] => inv_row[0].IN2
+row[1] => inv_row[1].IN2
+row[2] => inv_row[2].IN2
+row[3] => inv_row[3].IN2
+col[0] <= col[0].DB_MAX_OUTPUT_PORT_TYPE
+col[1] <= col[1].DB_MAX_OUTPUT_PORT_TYPE
+col[2] <= col[2].DB_MAX_OUTPUT_PORT_TYPE
+col[3] <= col[3].DB_MAX_OUTPUT_PORT_TYPE
+value[0] <= keypad_decoder:keypad_key_decoder.value
+value[1] <= keypad_decoder:keypad_key_decoder.value
+value[2] <= keypad_decoder:keypad_key_decoder.value
+value[3] <= keypad_decoder:keypad_key_decoder.value
+valid <= keypad_fsm:keypad_fsm.sense
+slow_clock <= slow_clock.DB_MAX_OUTPUT_PORT_TYPE
+sense <= keypad_fsm:keypad_fsm.sense
+valid_digit <= keypad_decoder:keypad_key_decoder.valid
+inv_row[0] <= inv_row[0].DB_MAX_OUTPUT_PORT_TYPE
+inv_row[1] <= inv_row[1].DB_MAX_OUTPUT_PORT_TYPE
+inv_row[2] <= inv_row[2].DB_MAX_OUTPUT_PORT_TYPE
+inv_row[3] <= inv_row[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|keypad_input:kpd_in|keypad_base:keypad_base|clock_div:keypad_clock_divider
+clk => clk_track.CLK
+clk => r_reg[0].CLK
+clk => r_reg[1].CLK
+clk => r_reg[2].CLK
+clk => r_reg[3].CLK
+clk => r_reg[4].CLK
+clk => r_reg[5].CLK
+clk => r_reg[6].CLK
+clk => r_reg[7].CLK
+clk => r_reg[8].CLK
+clk => r_reg[9].CLK
+clk => r_reg[10].CLK
+clk => r_reg[11].CLK
+clk => r_reg[12].CLK
+clk => r_reg[13].CLK
+clk => r_reg[14].CLK
+clk => r_reg[15].CLK
+clk => r_reg[16].CLK
+clk => r_reg[17].CLK
+clk => r_reg[18].CLK
+clk => r_reg[19].CLK
+clk => r_reg[20].CLK
+clk => r_reg[21].CLK
+clk => r_reg[22].CLK
+clk => r_reg[23].CLK
+clk => r_reg[24].CLK
+clk => r_reg[25].CLK
+clk => r_reg[26].CLK
+clk => r_reg[27].CLK
+clk => r_reg[28].CLK
+clk => r_reg[29].CLK
+clk => r_reg[30].CLK
+clk => r_reg[31].CLK
+reset => clk_track.ACLR
+reset => r_reg[0].ACLR
+reset => r_reg[1].ACLR
+reset => r_reg[2].ACLR
+reset => r_reg[3].ACLR
+reset => r_reg[4].ACLR
+reset => r_reg[5].ACLR
+reset => r_reg[6].ACLR
+reset => r_reg[7].ACLR
+reset => r_reg[8].ACLR
+reset => r_reg[9].ACLR
+reset => r_reg[10].ACLR
+reset => r_reg[11].ACLR
+reset => r_reg[12].ACLR
+reset => r_reg[13].ACLR
+reset => r_reg[14].ACLR
+reset => r_reg[15].ACLR
+reset => r_reg[16].ACLR
+reset => r_reg[17].ACLR
+reset => r_reg[18].ACLR
+reset => r_reg[19].ACLR
+reset => r_reg[20].ACLR
+reset => r_reg[21].ACLR
+reset => r_reg[22].ACLR
+reset => r_reg[23].ACLR
+reset => r_reg[24].ACLR
+reset => r_reg[25].ACLR
+reset => r_reg[26].ACLR
+reset => r_reg[27].ACLR
+reset => r_reg[28].ACLR
+reset => r_reg[29].ACLR
+reset => r_reg[30].ACLR
+reset => r_reg[31].ACLR
+clk_out <= clk_track.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|keypad_input:kpd_in|keypad_base:keypad_base|keypad_fsm:keypad_fsm
+clk => col[0]~reg0.CLK
+clk => col[1]~reg0.CLK
+clk => col[2]~reg0.CLK
+clk => col[3]~reg0.CLK
+clk => state[0]~reg0.CLK
+clk => state[1]~reg0.CLK
+clk => state[2]~reg0.CLK
+clk => state[3]~reg0.CLK
+row[0] => trig.IN0
+row[1] => trig.IN1
+row[2] => trig.IN1
+row[3] => trig.IN1
+col[0] <= col[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+col[1] <= col[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+col[2] <= col[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+col[3] <= col[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+sense <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+state[0] <= state[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+state[1] <= state[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+state[2] <= state[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+state[3] <= state[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+trig <= trig.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|keypad_input:kpd_in|keypad_base:keypad_base|keypad_decoder:keypad_key_decoder
+row[0] => Decoder0.IN3
+row[1] => Decoder0.IN2
+row[2] => Decoder0.IN1
+row[3] => Decoder0.IN0
+col[0] => Decoder0.IN7
+col[1] => Decoder0.IN6
+col[2] => Decoder0.IN5
+col[3] => Decoder0.IN4
+value[0] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+value[1] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+value[2] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+value[3] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+valid <= <GND>
+
+
+|AddSub_IO|keypad_input:kpd_in|nBitRegister:in_reg
+D[0] => Q_latch[0].DATAIN
+D[1] => Q_latch[1].DATAIN
+D[2] => Q_latch[2].DATAIN
+D[3] => Q_latch[3].DATAIN
+clk => Q_latch[0].CLK
+clk => Q_latch[1].CLK
+clk => Q_latch[2].CLK
+clk => Q_latch[3].CLK
+clr => Q_latch[0].ACLR
+clr => Q_latch[1].ACLR
+clr => Q_latch[2].ACLR
+clr => Q_latch[3].ACLR
+Q[0] <= Q_latch[0].DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q_latch[1].DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q_latch[2].DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q_latch[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|hex2sevenMX:h2sMX
+Clock => Clock.IN1
+Reset => Reset.IN3
+Load => comb.IN0
+OnOff => ~NO_FANOUT~
+HEX3[0] => HEX3[0].IN1
+HEX3[1] => HEX3[1].IN1
+HEX3[2] => HEX3[2].IN1
+HEX3[3] => HEX3[3].IN1
+HEX2[0] => HEX2[0].IN1
+HEX2[1] => HEX2[1].IN1
+HEX2[2] => HEX2[2].IN1
+HEX2[3] => HEX2[3].IN1
+HEX1[0] => HEX1[0].IN1
+HEX1[1] => HEX1[1].IN1
+HEX1[2] => HEX1[2].IN1
+HEX1[3] => HEX1[3].IN1
+HEX0[0] => HEX0[0].IN1
+HEX0[1] => HEX0[1].IN1
+HEX0[2] => HEX0[2].IN1
+HEX0[3] => HEX0[3].IN1
+seg[0] <= binary2Seven_high:bin2sev_inst.SEV
+seg[1] <= binary2Seven_high:bin2sev_inst.SEV
+seg[2] <= binary2Seven_high:bin2sev_inst.SEV
+seg[3] <= binary2Seven_high:bin2sev_inst.SEV
+seg[4] <= binary2Seven_high:bin2sev_inst.SEV
+seg[5] <= binary2Seven_high:bin2sev_inst.SEV
+seg[6] <= binary2Seven_high:bin2sev_inst.SEV
+cat[0] <= fsm:FSM_inst.CAT
+cat[1] <= fsm:FSM_inst.CAT
+cat[2] <= fsm:FSM_inst.CAT
+cat[3] <= fsm:FSM_inst.CAT
+testout[0] <= MUXin[0].DB_MAX_OUTPUT_PORT_TYPE
+testout[1] <= MUXin[1].DB_MAX_OUTPUT_PORT_TYPE
+testout[2] <= MUXin[2].DB_MAX_OUTPUT_PORT_TYPE
+testout[3] <= MUXin[3].DB_MAX_OUTPUT_PORT_TYPE
+testout[4] <= MUXin[4].DB_MAX_OUTPUT_PORT_TYPE
+testout[5] <= MUXin[5].DB_MAX_OUTPUT_PORT_TYPE
+testout[6] <= MUXin[6].DB_MAX_OUTPUT_PORT_TYPE
+testout[7] <= MUXin[7].DB_MAX_OUTPUT_PORT_TYPE
+testout[8] <= MUXin[8].DB_MAX_OUTPUT_PORT_TYPE
+testout[9] <= MUXin[9].DB_MAX_OUTPUT_PORT_TYPE
+testout[10] <= MUXin[10].DB_MAX_OUTPUT_PORT_TYPE
+testout[11] <= MUXin[11].DB_MAX_OUTPUT_PORT_TYPE
+testout[12] <= MUXin[12].DB_MAX_OUTPUT_PORT_TYPE
+testout[13] <= MUXin[13].DB_MAX_OUTPUT_PORT_TYPE
+testout[14] <= MUXin[14].DB_MAX_OUTPUT_PORT_TYPE
+testout[15] <= MUXin[15].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|hex2sevenMX:h2sMX|clockLadder:clock_Ladder
+CLK => ladder[0]~reg0.CLK
+CLK => ladder[1]~reg0.CLK
+CLK => ladder[2]~reg0.CLK
+CLK => ladder[3]~reg0.CLK
+CLK => ladder[4]~reg0.CLK
+CLK => ladder[5]~reg0.CLK
+CLK => ladder[6]~reg0.CLK
+CLK => ladder[7]~reg0.CLK
+CLK => ladder[8]~reg0.CLK
+CLK => ladder[9]~reg0.CLK
+CLK => ladder[10]~reg0.CLK
+CLK => ladder[11]~reg0.CLK
+CLK => ladder[12]~reg0.CLK
+CLK => ladder[13]~reg0.CLK
+CLK => ladder[14]~reg0.CLK
+CLK => ladder[15]~reg0.CLK
+CLK => ladder[16]~reg0.CLK
+CLK => ladder[17]~reg0.CLK
+CLK => ladder[18]~reg0.CLK
+CLK => ladder[19]~reg0.CLK
+CLK => ladder[20]~reg0.CLK
+CLK => ladder[21]~reg0.CLK
+CLK => ladder[22]~reg0.CLK
+CLK => ladder[23]~reg0.CLK
+CLK => ladder[24]~reg0.CLK
+CLK => ladder[25]~reg0.CLK
+CLK => ladder[26]~reg0.CLK
+CLK => ladder[27]~reg0.CLK
+CLK => ladder[28]~reg0.CLK
+CLK => ladder[29]~reg0.CLK
+CLK => ladder[30]~reg0.CLK
+CLK => ladder[31]~reg0.CLK
+CLR => ~NO_FANOUT~
+ladder[0] <= ladder[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[1] <= ladder[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[2] <= ladder[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[3] <= ladder[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[4] <= ladder[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[5] <= ladder[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[6] <= ladder[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[7] <= ladder[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[8] <= ladder[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[9] <= ladder[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[10] <= ladder[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[11] <= ladder[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[12] <= ladder[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[13] <= ladder[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[14] <= ladder[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[15] <= ladder[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[16] <= ladder[16]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[17] <= ladder[17]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[18] <= ladder[18]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[19] <= ladder[19]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[20] <= ladder[20]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[21] <= ladder[21]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[22] <= ladder[22]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[23] <= ladder[23]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[24] <= ladder[24]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[25] <= ladder[25]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[26] <= ladder[26]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[27] <= ladder[27]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[28] <= ladder[28]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[29] <= ladder[29]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[30] <= ladder[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ladder[31] <= ladder[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|hex2sevenMX:h2sMX|nBitRegister:nBitRegisterSV_inst
+D[0] => Q_latch[0].DATAIN
+D[1] => Q_latch[1].DATAIN
+D[2] => Q_latch[2].DATAIN
+D[3] => Q_latch[3].DATAIN
+D[4] => Q_latch[4].DATAIN
+D[5] => Q_latch[5].DATAIN
+D[6] => Q_latch[6].DATAIN
+D[7] => Q_latch[7].DATAIN
+D[8] => Q_latch[8].DATAIN
+D[9] => Q_latch[9].DATAIN
+D[10] => Q_latch[10].DATAIN
+D[11] => Q_latch[11].DATAIN
+D[12] => Q_latch[12].DATAIN
+D[13] => Q_latch[13].DATAIN
+D[14] => Q_latch[14].DATAIN
+D[15] => Q_latch[15].DATAIN
+clk => Q_latch[0].CLK
+clk => Q_latch[1].CLK
+clk => Q_latch[2].CLK
+clk => Q_latch[3].CLK
+clk => Q_latch[4].CLK
+clk => Q_latch[5].CLK
+clk => Q_latch[6].CLK
+clk => Q_latch[7].CLK
+clk => Q_latch[8].CLK
+clk => Q_latch[9].CLK
+clk => Q_latch[10].CLK
+clk => Q_latch[11].CLK
+clk => Q_latch[12].CLK
+clk => Q_latch[13].CLK
+clk => Q_latch[14].CLK
+clk => Q_latch[15].CLK
+clr => Q_latch[0].ACLR
+clr => Q_latch[1].ACLR
+clr => Q_latch[2].ACLR
+clr => Q_latch[3].ACLR
+clr => Q_latch[4].ACLR
+clr => Q_latch[5].ACLR
+clr => Q_latch[6].ACLR
+clr => Q_latch[7].ACLR
+clr => Q_latch[8].ACLR
+clr => Q_latch[9].ACLR
+clr => Q_latch[10].ACLR
+clr => Q_latch[11].ACLR
+clr => Q_latch[12].ACLR
+clr => Q_latch[13].ACLR
+clr => Q_latch[14].ACLR
+clr => Q_latch[15].ACLR
+Q[0] <= Q_latch[0].DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q_latch[1].DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q_latch[2].DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q_latch[3].DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q_latch[4].DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q_latch[5].DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q_latch[6].DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= Q_latch[7].DB_MAX_OUTPUT_PORT_TYPE
+Q[8] <= Q_latch[8].DB_MAX_OUTPUT_PORT_TYPE
+Q[9] <= Q_latch[9].DB_MAX_OUTPUT_PORT_TYPE
+Q[10] <= Q_latch[10].DB_MAX_OUTPUT_PORT_TYPE
+Q[11] <= Q_latch[11].DB_MAX_OUTPUT_PORT_TYPE
+Q[12] <= Q_latch[12].DB_MAX_OUTPUT_PORT_TYPE
+Q[13] <= Q_latch[13].DB_MAX_OUTPUT_PORT_TYPE
+Q[14] <= Q_latch[14].DB_MAX_OUTPUT_PORT_TYPE
+Q[15] <= Q_latch[15].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|hex2sevenMX:h2sMX|four2one:four2one_inst
+A => Mux0.IN0
+A => Mux1.IN0
+A => Mux2.IN0
+A => Mux3.IN0
+B => Mux0.IN1
+B => Mux1.IN1
+B => Mux2.IN1
+B => Mux3.IN1
+D0[0] => Mux3.IN2
+D0[1] => Mux2.IN2
+D0[2] => Mux1.IN2
+D0[3] => Mux0.IN2
+D1[0] => Mux3.IN3
+D1[1] => Mux2.IN3
+D1[2] => Mux1.IN3
+D1[3] => Mux0.IN3
+D2[0] => Mux3.IN4
+D2[1] => Mux2.IN4
+D2[2] => Mux1.IN4
+D2[3] => Mux0.IN4
+D3[0] => Mux3.IN5
+D3[1] => Mux2.IN5
+D3[2] => Mux1.IN5
+D3[3] => Mux0.IN5
+Y[0] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+Y[1] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+Y[2] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+Y[3] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|hex2sevenMX:h2sMX|binary2Seven_high:bin2sev_inst
+BIN[0] => Decoder0.IN3
+BIN[1] => Decoder0.IN2
+BIN[2] => Decoder0.IN1
+BIN[3] => Decoder0.IN0
+SEV[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+SEV[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+SEV[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+SEV[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+SEV[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+SEV[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+SEV[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|hex2sevenMX:h2sMX|fsm:FSM_inst
+mux_rate => state[0].CLK
+mux_rate => state[1].CLK
+reset => state[0].ACLR
+reset => state[1].ACLR
+SEL[0] <= state[0].DB_MAX_OUTPUT_PORT_TYPE
+SEL[1] <= state[1].DB_MAX_OUTPUT_PORT_TYPE
+CAT[0] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+CAT[1] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+CAT[2] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+CAT[3] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+test[0] <= state[0].DB_MAX_OUTPUT_PORT_TYPE
+test[1] <= nextstate.DB_MAX_OUTPUT_PORT_TYPE
+test[2] <= state[0].DB_MAX_OUTPUT_PORT_TYPE
+test[3] <= state[1].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|CarryLookAhead_AddSub:cla
+keypad_in[0] => keypad_in[0].IN2
+keypad_in[1] => keypad_in[1].IN2
+keypad_in[2] => keypad_in[2].IN2
+keypad_in[3] => keypad_in[3].IN2
+aout[0] <= aout[0].DB_MAX_OUTPUT_PORT_TYPE
+aout[1] <= aout[1].DB_MAX_OUTPUT_PORT_TYPE
+aout[2] <= aout[2].DB_MAX_OUTPUT_PORT_TYPE
+aout[3] <= aout[3].DB_MAX_OUTPUT_PORT_TYPE
+bout[0] <= bout[0].DB_MAX_OUTPUT_PORT_TYPE
+bout[1] <= bout[1].DB_MAX_OUTPUT_PORT_TYPE
+bout[2] <= bout[2].DB_MAX_OUTPUT_PORT_TYPE
+bout[3] <= bout[3].DB_MAX_OUTPUT_PORT_TYPE
+addsub => addsub.IN1
+load => load_a.IN0
+load => load_b.IN0
+load_sel => load_a.IN1
+load_sel => load_b.IN1
+submit => submit.IN2
+reset => reset.IN4
+CCout[0] <= nBitRegister:CC_reg.Q
+CCout[1] <= nBitRegister:CC_reg.Q
+CCout[2] <= nBitRegister:CC_reg.Q
+CCout[3] <= nBitRegister:CC_reg.Q
+R[0] <= R.DB_MAX_OUTPUT_PORT_TYPE
+R[1] <= R.DB_MAX_OUTPUT_PORT_TYPE
+R[2] <= R.DB_MAX_OUTPUT_PORT_TYPE
+R[3] <= R.DB_MAX_OUTPUT_PORT_TYPE
+Rout[0] <= Rout.DB_MAX_OUTPUT_PORT_TYPE
+Rout[1] <= Rout.DB_MAX_OUTPUT_PORT_TYPE
+Rout[2] <= Rout.DB_MAX_OUTPUT_PORT_TYPE
+Rout[3] <= Rout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|CarryLookAhead_AddSub:cla|nBitRegister:a_reg
+D[0] => Q_latch[0].DATAIN
+D[1] => Q_latch[1].DATAIN
+D[2] => Q_latch[2].DATAIN
+D[3] => Q_latch[3].DATAIN
+clk => Q_latch[0].CLK
+clk => Q_latch[1].CLK
+clk => Q_latch[2].CLK
+clk => Q_latch[3].CLK
+clr => Q_latch[0].ACLR
+clr => Q_latch[1].ACLR
+clr => Q_latch[2].ACLR
+clr => Q_latch[3].ACLR
+Q[0] <= Q_latch[0].DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q_latch[1].DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q_latch[2].DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q_latch[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|CarryLookAhead_AddSub:cla|nBitRegister:b_reg
+D[0] => Q_latch[0].DATAIN
+D[1] => Q_latch[1].DATAIN
+D[2] => Q_latch[2].DATAIN
+D[3] => Q_latch[3].DATAIN
+clk => Q_latch[0].CLK
+clk => Q_latch[1].CLK
+clk => Q_latch[2].CLK
+clk => Q_latch[3].CLK
+clr => Q_latch[0].ACLR
+clr => Q_latch[1].ACLR
+clr => Q_latch[2].ACLR
+clr => Q_latch[3].ACLR
+Q[0] <= Q_latch[0].DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q_latch[1].DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q_latch[2].DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q_latch[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|CarryLookAhead_AddSub:cla|cla_logic:cla_log
+a[0] => a[0].IN1
+a[1] => a[1].IN1
+a[2] => a[2].IN1
+a[3] => a[3].IN1
+b[0] => comb.IN0
+b[1] => comb.IN0
+b[2] => comb.IN0
+b[3] => comb.IN0
+cin => cin.IN1
+cc[0] <= c4.DB_MAX_OUTPUT_PORT_TYPE
+cc[1] <= v.DB_MAX_OUTPUT_PORT_TYPE
+cc[2] <= cla_pg_gen:p3g3.s
+cc[3] <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+sum[0] <= cla_pg_gen:p0g0.s
+sum[1] <= cla_pg_gen:p1g1.s
+sum[2] <= cla_pg_gen:p2g2.s
+sum[3] <= cla_pg_gen:p3g3.s
+
+
+|AddSub_IO|CarryLookAhead_AddSub:cla|cla_logic:cla_log|cla_pg_gen:p0g0
+a => g.IN0
+a => p.IN0
+b => g.IN1
+b => p.IN1
+c => s.IN1
+g <= g.DB_MAX_OUTPUT_PORT_TYPE
+p <= p.DB_MAX_OUTPUT_PORT_TYPE
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|CarryLookAhead_AddSub:cla|cla_logic:cla_log|cla_pg_gen:p1g1
+a => g.IN0
+a => p.IN0
+b => g.IN1
+b => p.IN1
+c => s.IN1
+g <= g.DB_MAX_OUTPUT_PORT_TYPE
+p <= p.DB_MAX_OUTPUT_PORT_TYPE
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|CarryLookAhead_AddSub:cla|cla_logic:cla_log|cla_pg_gen:p2g2
+a => g.IN0
+a => p.IN0
+b => g.IN1
+b => p.IN1
+c => s.IN1
+g <= g.DB_MAX_OUTPUT_PORT_TYPE
+p <= p.DB_MAX_OUTPUT_PORT_TYPE
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|CarryLookAhead_AddSub:cla|cla_logic:cla_log|cla_pg_gen:p3g3
+a => g.IN0
+a => p.IN0
+b => g.IN1
+b => p.IN1
+c => s.IN1
+g <= g.DB_MAX_OUTPUT_PORT_TYPE
+p <= p.DB_MAX_OUTPUT_PORT_TYPE
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|CarryLookAhead_AddSub:cla|nBitRegister:sum_reg
+D[0] => Q_latch[0].DATAIN
+D[1] => Q_latch[1].DATAIN
+D[2] => Q_latch[2].DATAIN
+D[3] => Q_latch[3].DATAIN
+clk => Q_latch[0].CLK
+clk => Q_latch[1].CLK
+clk => Q_latch[2].CLK
+clk => Q_latch[3].CLK
+clr => Q_latch[0].ACLR
+clr => Q_latch[1].ACLR
+clr => Q_latch[2].ACLR
+clr => Q_latch[3].ACLR
+Q[0] <= Q_latch[0].DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q_latch[1].DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q_latch[2].DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q_latch[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AddSub_IO|CarryLookAhead_AddSub:cla|nBitRegister:CC_reg
+D[0] => Q_latch[0].DATAIN
+D[1] => Q_latch[1].DATAIN
+D[2] => Q_latch[2].DATAIN
+D[3] => Q_latch[3].DATAIN
+clk => Q_latch[0].CLK
+clk => Q_latch[1].CLK
+clk => Q_latch[2].CLK
+clk => Q_latch[3].CLK
+clr => Q_latch[0].ACLR
+clr => Q_latch[1].ACLR
+clr => Q_latch[2].ACLR
+clr => Q_latch[3].ACLR
+Q[0] <= Q_latch[0].DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q_latch[1].DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q_latch[2].DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q_latch[3].DB_MAX_OUTPUT_PORT_TYPE
+
+

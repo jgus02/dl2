@@ -1,0 +1,14 @@
+module ccreg4b(
+  input load,
+  input clr,
+  input [3:0] in,
+  output [3:0] out
+);
+
+  reg flags [3:0];
+
+  always_comb 
+  begin
+    if(~clear) register <= 4'b0000;
+    else if(~load) register <= in;
+  end

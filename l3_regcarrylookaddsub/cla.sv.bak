@@ -1,0 +1,3 @@
+module cla (
+  input [3:0] a_in;
+  input [3:0] b_in;

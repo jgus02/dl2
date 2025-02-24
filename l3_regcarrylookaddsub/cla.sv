@@ -1,0 +1,94 @@
+module cla (
+  input [3:0] a_in,
+  input [3:0] b_in,
+  input addsub,
+  input load,
+  input submit,
+  input reset,
+  output flags_znvc [3:0],
+  output [3:0] R
+);
+
+  // registered inputs
+  wire [3:0] aout;
+  wire [3:0] bout;
+  
+  wire cin;
+  assign cin = 1'b0;
+  
+  // pigi
+  wire g [3:0];
+  wire p [3:0];
+  
+  // CLA calculation outputs
+  wire cout;
+  wire [3:0] sum;
+  wire [3:0] ccout;
+  
+  reg4b a_reg (
+    .load(load),
+    .clr(reset),
+    .in(a_in),
+    .out(aout)
+);
+
+  reg4b b_reg (
+    .load(load),
+    .clr(reset),
+    .in(b_in),
+    .out(bout)
+);
+
+  cla_pg_gen p0g0 (
+    .a(aout[0]),
+    .b(bout[0]),
+    .c(cin),
+    .g(g[0]),
+    .p(p[0])
+  );
+  
+  cla_pg_gen p1g1 (
+    .a(aout[1]),
+    .b(bout[1]),
+    .g(g[1]),
+    .p(p[1])
+  );
+  
+  cla_pg_gen p2g2 (
+    .a(aout[2]),
+    .b(bout[2]),
+    .g(g[2]),
+    .p(p[2])
+  );
+  
+  cla_pg_gen p3g3 (
+    .a(aout[3]),
+    .b(bout[3]),
+    .g(g[3]),
+    .p(p[3])
+  );
+  
+  cla_logic cla_log (
+    .g(g),     // g [3:0],
+    .p(p),     // p [3:0],
+    .cin(cin),   // cin
+    .cout(cout),  // cout
+    .sum(sum)   // [3:0] sum 
+  );
+
+  reg4b r_reg (
+    .load(submit),
+    .clr(reset),
+    .in(sum),
+    .out(R)
+  );
+  
+  cla_flags flag_reg (
+    .r(sum),    // 3:0 r
+    .carry_bit(cout),
+    .load(load),
+    .clr(reset),
+    .flags_znvc(flags_znvc)   // znvc_flags [3:0]
+  );
+
+endmodule
